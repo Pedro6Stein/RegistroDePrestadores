@@ -1,78 +1,42 @@
-export default function Tablelist() {
+export default function TableList() {
+    const funcionarios = [
+        { id: 1, nome: "Pedro Stein", email: "zodtewill@gmail.com", cargo: "Desenvolvedor Júnior", valorHora: 150, isAtivo: true },
+        { id: 2, nome: "Pedro Stein 2", email: "zodtewill@gmail.com", cargo: "Desenvolvedor Pleno", valorHora: 350, isAtivo: false },
+    ];
+
     return (
-        <>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+        <div className="overflow-x-auto">
+            <table className="table table-zebra">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>E-mail</th>
+                        <th>Valor/h</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {funcionarios.map((f) => (
+                        <tr key={f.id} className="hover">
+                            <th scope="row">{f.id}</th>
+                            <td>{f.nome}</td>
+                            <td>{f.cargo}</td>
+                            <td>
+                                <a className="link" href={`mailto:${f.email}`}>{f.email}</a>
+                            </td>
+                            <td>{f.valorHora.toLocaleString("pt-BR", {style: "currency", currency:"BRL"})}</td>
+                            <td>
+                                <span className={`badge ${f.isAtivo ? "badge-success" : "badge-error"}`}>
+                                    {f.isAtivo ? "Ativo" : "Inativo"}
+                                </span>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody className="houve">
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        {/* row 2 */}
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        {/* row 2 */}
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </>
-    )
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
 }

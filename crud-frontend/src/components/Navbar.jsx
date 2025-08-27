@@ -2,7 +2,7 @@ export default function Navbar() {
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
-                <a className="btn btn-ghost text-xl">Clientes</a>
+                <a className="btn btn-ghost text-xl">Colaborador</a>
             </div>
 
             <div className="navbar-center">

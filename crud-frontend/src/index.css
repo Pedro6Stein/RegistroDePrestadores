@@ -1,15 +1,11 @@
 @import "tailwindcss";
 
-/* DaisyUI v5 em Tailwind v4 => ativa via @plugin */
 @plugin "daisyui" {
-  /* escolha os temas que quer expor */
-  themes: light --default, dracula --prefersdark;
+  themes: light --default, night --prefersdark;
 }
 
-/* opcional: ajuda o scanner a encontrar classes */
 @source "./**/*.{html,js,jsx,ts,tsx}";
 
-/* opcional: tokens de tema (equivalente ao theme.extend antigo) */
 @theme {
   --color-brand-500: oklch(0.68 0.12 260);
 }

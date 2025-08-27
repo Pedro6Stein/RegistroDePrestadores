@@ -27,11 +27,15 @@ export default function TableList() {
                             <td>
                                 <a className="link" href={`mailto:${f.email}`}>{f.email}</a>
                             </td>
-                            <td>{f.valorHora.toLocaleString("pt-BR", {style: "currency", currency:"BRL"})}</td>
+                            <td>{f.valorHora.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</td>
                             <td>
                                 <span className={`badge ${f.isAtivo ? "badge-success" : "badge-error"}`}>
                                     {f.isAtivo ? "Ativo" : "Inativo"}
                                 </span>
+                            </td>
+                            <td className="flex gap-2">
+                                <button className="btn btn-active btn-sm">Atualizar</button>
+                                <button className="btn btn-ghost text-error hover:bg-error/10 btn-sm">Deletar</button>
                             </td>
                         </tr>
                     ))}

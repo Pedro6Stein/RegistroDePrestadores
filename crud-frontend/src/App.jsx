@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Tablelist from "./components/Tablelist";
 
 export default function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [onClose, setIsOpen] = useState(false);
   const [modalMode, setModalMode] = useState("add");
 
   const handleOpen = (mode) => {
@@ -25,9 +25,9 @@ export default function App() {
 
   return (
     <>
-      <Navbar onOpen={() => handleOpen("add")}/>
+      <Navbar onOpen={() => handleOpen("add")} />
       <Tablelist />
-      <ModalForm isOpen={isOpen} OnClose />
+      <ModalForm isOpen={onClose} onClose={handleClose} />
     </>
   );
 }

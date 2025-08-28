@@ -1,4 +1,4 @@
-export default function Navbar() {
+export default function Navbar(onOpen) {
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -11,9 +11,9 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <button className="navbar-end">
+            <button className="navbar-end"  onOpen>
                 <a className="btn border-0 bg-blue-600 hover:bg-blue-700 text-white">
-                    Selecionar
+                    Adicionar
                 </a>
             </button>
         </div>

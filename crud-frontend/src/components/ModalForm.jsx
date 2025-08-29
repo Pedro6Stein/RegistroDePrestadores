@@ -1,19 +1,34 @@
-export default function ModalForm(isOpen, onClose, model, onSubmit) {
+// ModalForm.jsx
+export default function ModalForm({ modal }) {
+    const { isOpen, onClose, mode, onSubmit } = modal;
+
+    if (!isOpen) return null;
+
     return (
-        <>
-            <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>open modal</button>
-            <dialog id="my_modal_1" className="modal">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Press ESC key or click the button below to close</p>
-                    <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
-                        </form>
-                    </div>
+        <div className="modal modal-open">
+            <div className="modal-box">
+                <h3 className="font-bold text-lg">
+                    {mode === "edit" ? "Editar Colaborador" : "Adicionar Colaborador"}
+                </h3>
+
+                <p className="py-4 text-sm text-base-content/70">
+                    Preencha os dados e clique em {mode === "edit" ? "Salvar alterações" : "Adicionar"}.
+                </p>
+
+                <div className="modal-action">
+                    <button className="btn btn-ghost" onClick={onClose}>
+                        Cancelar
+                    </button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={onSubmit}
+                    >
+                        {mode === "edit" ? "Salvar alterações" : "Adicionar"}
+                    </button>
                 </div>
-            </dialog>
-        </>
+            </div>
+
+            <div className="modal-backdrop bg-black/40" onClick={onClose} />
+        </div>
     );
 }

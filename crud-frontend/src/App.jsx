@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Tablelist from "./components/Tablelist";
 
 export default function App() {
-  const [onClose, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [modalMode, setModalMode] = useState("add");
 
   const handleOpen = (mode) => {
@@ -15,11 +15,8 @@ export default function App() {
   const handleClose = () => setIsOpen(false);
 
   const handleSubmit = () => {
-    if (modalMode === "add") {
-      console.log("O modal foi adicionado");
-    } else {
-      console.log("O modal foi alterado");
-    }
+    if (modalMode === "add") console.log("O modal foi adicionado");
+    else console.log("O modal foi alterado");
     setIsOpen(false);
   };
 
@@ -27,7 +24,13 @@ export default function App() {
     <>
       <Navbar onOpen={() => handleOpen("add")} />
       <Tablelist />
-      <ModalForm isOpen={onClose} onClose={handleClose} />
+      <ModalForm modal={{
+        isOpen,
+        onClose: handleClose,
+        mode: modalMode,
+        onSubmit: handleSubmit,
+      }} />
+
     </>
   );
 }
